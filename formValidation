@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validation form</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container"><br>
+
+		<h1 class="text-success text-center">COMPLETE FORM VALIDATION PAGE</h1><br>
+
+		<div class="col-lg-8 m-auto d-block">
+
+			<form action="#" onsubmit="return Validation()" class="bg-light">
+
+				<div class="form-group">
+					<label>username: </label>
+					<input type="text" name="user" class="form-control" id="user" autocomplete="off">
+					<span id="username" class="text-danger font-weight-bold"></span>
+				</div>
+
+				<div class="form-group">
+					<label>password: </label>
+					<input type="text" name="pass" class="form-control" id="pass" autocomplete="off">
+					<span id="password" class="text-danger font-weight-bold"></span>
+				</div>
+
+				<div class="form-group">
+					<label>confirm password: </label>
+					<input type="text" name="conpass" class="form-control" id="conpass" autocomplete="off">
+					<span id="confirm password" class="text-danger font-weight-bold"></span>
+				</div>
+
+				<div class="form-group">
+					<label>mobile: </label>
+					<input type="text" name="mobile" class="form-control" id="mobile" autocomplete="off">
+					<span id="mobile Number" class="text-danger font-weight-bold"></span>
+				</div>
+
+				<div class="form-group">
+					<label>email: </label>
+					<input type="text" name="email" class="form-control" id="email" autocomplete="off">
+					<span id="emails" class="text-danger font-weight-bold"></span>
+				</div>
+
+				<div class="form-group">
+					<label>date of birth: </label>
+					<input type="text" name="dob" class="form-control" id="dob" autocomplete="off">
+					<span id="dob" class="text-danger font-weight-bold"></span>
+				</div>
+
+				<div class="form-group">
+					<label>gender: </label>
+					<input type="radio" name="container" value="male">male </input>
+					<input type="radio" name="container" value="male"> female </input>
+					<input type="radio" name="container" value="male"> neuter </input>
+					<span id="gender" class="text-danger font-weight-bold"></span>
+				</div>
+
+				<input type="submit" name="submit" value="submit" class="btn btn-success" autocomplete="off">
+
+			</form>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+
+		function Validation(){
+
+			var user = document.getElementById('user').value;
+			var pass = document.getElementById('pass').value;
+			var conpass = document.getElementById('conpass').value;
+			var mobile = document.getElementById('mobile').value;
+			var email = document.getElementById('email').value;
+			var dob = document.getElementById('dob').value;
+			var gender = document.getElementById('gender').value;
+
+
+			if(user == ""){
+				document.getElementById('username').innerHTML = "  ** Please fill it";
+				return false;
+			}
+			if((user.length <= 2) || (user.length > 25)) {
+				document.getElementById('username').innerHTML = "  ** user length must be between 2 to 25 alphabets";
+				return false;
+			}
+			if(!isNaN(user)) {
+				document.getElementById('username').innerHTML = "  ** only characters are allowed";
+				return false;
+			}
+
+
+
+			if(pass == ""){
+				document.getElementById('password').innerHTML = "  ** Please fill it";
+				return false;
+			}
+			if((pass.length <= 8) || (user.length > 20)) {
+				document.getElementById('password').innerHTML = "  ** password length must be between 8 to 20 alphabets";
+				return false;
+			}
+
+
+			if(pass != conpass) {
+				document.getElementById('password').innerHTML = "  ** passwords are not same";
+				return false;
+			}
+			if(conpass == ""){
+				document.getElementById('confirm password').innerHTML = "  ** Please fill it";
+				return false;
+			}
+
+
+
+			if(mobile == ""){
+				document.getElementById('mobile Number').innerHTML = "  ** Please fill it";
+				return false;
+			}
+			if(isNaN(mobile)) {
+				document.getElementById('mobile Number').innerHTML = "  ** user must write numbers only";
+				return false;
+			}
+			if(mobile.length!=10){
+				document.getElementById('mobile Number').innerHTML = "  ** give exact 10 digit number";
+				return false;
+			}
+
+
+
+
+			if(email == ""){
+				document.getElementById('emails').innerHTML = "  ** Please fill it";
+				return false;
+			}
+			if(email.indexOf("@") <= 0){
+				document.getElementById('emails').innerHTML = "  ** @ is in invalid position";
+				return false;
+			}
+			if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')) {
+				document.getElementById('emails').innerHTML = "  ** . is in invalid position";
+				return false;
+			}
+
+
+
+			if(dob == ""){
+				document.getElementById('dob').innerHTML = "  ** Please fill it";
+				return false;
+			}
+
+
+			if(gender == ""){
+				document.getElementById('gender').innerHTML = "  ** Please select one";
+				return false;
+			}
+		}
+		
+	</script>
+
+</body>
+</html>
